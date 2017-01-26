@@ -11,5 +11,8 @@
   "devDependencies": {
     "commander": "^2.9.0",
     "mocha": "^3.2.0"
+  },
+  "bin": {
+    "game": "game.js"
   }
 }
