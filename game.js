@@ -1,3 +1,18 @@
 #!/usr/bin/env node
 
-console.log("Hey World");
+var program = require('commander');
+
+program
+  .version('0.0.1')
+  .usage('<keywords>')
+  // .command('add <number>', 'Add a number')
+  // .action(function(number) {
+  //   console.log(number);
+  // })
+  .parse(process.argv);
+
+if(!program.args.length) {
+  program.help();
+} else {
+  console.log('Keywords: ' + program.args);
+}
