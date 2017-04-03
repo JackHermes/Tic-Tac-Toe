@@ -1,27 +1,44 @@
 #!/usr/bin/env node
 
 var program = require('commander');
-var board = require('./board.js');
+var board = {
+  row1: ['_','_','_'],
+  row2: ['_','_','_'],
+  row3: ['_','_','_']
+};
+
+var displayBoard = function() {
+  console.log([0],['A','B','C']);
+  console.log([1], board.row1);
+  console.log([2], board.row2);
+  console.log([3], board.row3);
+};
 
 program
   .version('0.0.1')
-  // .usage('[options] <words>')
-// create new board
-program
-  .command('new game')
+  .command('show')
   .action(function() {
-    console.log('Building board');
+    displayBoard();
+  })
+
+program
+  .command('new')
+  .action(function() {
+    console.log('Building board...');
     board.row1 = ['_','_','_'];
     board.row2 = ['_','_','_'];
     board.row3 = ['_','_','_'];
-    row1 = board.row1;
-    row2 = board.row2;
-    row3 = board.row3;
 
-    console.log([0],['A','B','C']);
-    console.log([1], row1);
-    console.log([2], row2);
-    console.log([3], row3);
+    displayBoard();
+  })
+
+program
+  .command('add')
+  .action(function() {
+    console.log('add in a piece');
+    board.row2[1] = 'X'
+
+    displayBoard();
   })
 
 program.parse(process.argv);
