@@ -1,6 +1,6 @@
 #!/usr/bin/env node
-
 var program = require('commander');
+
 var board = {
   row1: ['_','_','_'],
   row2: ['_','_','_'],
@@ -13,13 +13,17 @@ var displayBoard = function() {
   console.log([2], board.row2);
   console.log([3], board.row3);
 };
+var addPieces = function(item, index) {
+  console.log('Adding a piece.');
+  board.row1[index] = 'X';
+};
 
 program
   .version('0.0.1')
   .command('show')
   .action(function() {
     displayBoard();
-  })
+  });
 
 program
   .command('new')
@@ -28,18 +32,22 @@ program
     board.row1 = ['_','_','_'];
     board.row2 = ['_','_','_'];
     board.row3 = ['_','_','_'];
+    displayBoard();
+
+
+    board.row1.forEach(addPieces);
 
     displayBoard();
-  })
+  });
 
 program
   .command('add')
   .action(function() {
     console.log('add in a piece');
-    board.row2[1] = 'X'
+    board.row2[1] = 'X';
 
     displayBoard();
-  })
+  });
 
 program.parse(process.argv);
 
